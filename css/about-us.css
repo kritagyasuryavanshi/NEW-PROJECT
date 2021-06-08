@@ -54,7 +54,7 @@
   background-color: #2d7791;
 }
 .fnc-slide {
-  overflow: hidden;
+  overflow-y: scroll;
   position: absolute;
   left: 0;
   top: 0;
@@ -72,6 +72,7 @@
   transform: translate3d(0, 0, 0);
 }
 .fnc-slide__inner {
+  top: 0;
   position: relative;
   height: 100%;
   background-size: cover;
@@ -128,8 +129,10 @@
   transform: translateY(0) rotate(-10deg) translateX(200px) translateZ(0);
 }
 .fnc-slide__content {
-  z-index: 2;
-  position: absolute;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  overflow: fixed;
   left: 10%;
   top: 20%;
 }
@@ -137,6 +140,14 @@
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
+p{
+  overflow: visible;
+  color: white;
+  z-index: 10;
+}
+
+
 .fnc-slide__heading-line {
   overflow: hidden;
   position: relative;
@@ -239,6 +250,9 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  min-height: 20px;
+  max-height: auto;
+  width: auto;
 }
 .fnc-nav__bgs {
   z-index: -1;
@@ -250,10 +264,11 @@
   height: 100%;
 }
 .fnc-nav__bg {
+  bottom: 0;
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
+  width: auto;
   height: 100%;
 }
 .fnc-nav__bg.m--nav-bg-before {
@@ -265,24 +280,24 @@
   transition: transform 1s 0.6666666667s;
   transform: translateX(0);
 }
-.fnc-nav__controls {
-  font-size: 0;
-}
 .fnc-nav__control {
   overflow: hidden;
   position: relative;
   display: inline-block;
   vertical-align: top;
-  width: 100px;
-  height: 50px;
-  font-size: 14px;
+  max-height: 200px;
+  min-width: 10px;
+  min-height: 10px;
+  max-width: auto;
+  font-size: auto;
   color: #fff;
   text-transform: uppercase;
-  background: transparent;
+  background: black;
   border: none;
   outline: none;
   cursor: pointer;
   transition: background-color 0.5s;
+  padding-bottom: 10px;
 }
 .fnc-nav__control.m--active-control {
   background: #1f2833;
@@ -323,7 +338,13 @@
 .example-slider .fnc-slide-3 .fnc-slide__inner, .example-slider .fnc-slide-3 .fnc-slide__mask-inner {
   background-image: url("../images/about-us3.jpg");
 }
-.example-slider .fnc-slide-3 .fnc-slide__inner:before {
+.example-slider .fnc-slide-4 .fnc-slide__inner, .example-slider .fnc-slide-4 .fnc-slide__mask-inner {
+  background-image: url("../images/about-us3.jpg");
+}
+.example-slider .fnc-slide-5 .fnc-slide__inner, .example-slider .fnc-slide-5 .fnc-slide__mask-inner {
+  background-image: url("../images/about-us3.jpg");
+}
+.example-slider .fnc-slide-5 .fnc-slide__inner:before {
   content: "";
   position: absolute;
   left: 0;
@@ -332,10 +353,10 @@
   height: 100%;
   background: rgba(255, 255, 255, 0.1);
 }
-.example-slider .fnc-slide-4 .fnc-slide__inner, .example-slider .fnc-slide-4 .fnc-slide__mask-inner {
+.example-slider .fnc-slide-6 .fnc-slide__inner, .example-slider .fnc-slide-6 .fnc-slide__mask-inner {
   background-image: url("../images/about-us3.jpg");
 }
-.example-slider .fnc-slide-4 .fnc-slide__inner:before {
+.example-slider .fnc-slide-6 .fnc-slide__inner:before {
   content: "";
   position: absolute;
   left: 0;
@@ -347,3 +368,36 @@
 .example-slider .fnc-slide__heading, .example-slider .fnc-slide__action-btn, .example-slider .fnc-nav__control {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
+
+.fnc-nav__controls {   
+            z-index: 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/ 
+            height: auto;
+            background-repeat: repeat;
+            background-attachment: scroll;
+            background-position: 0% 0%;
+            position: fixed;
+            bottom: 0pt;
+            left: 0pt;
+        }
+
+
+@media only screen and (max-width: 768px) {
+  .myLinks{
+  display: none;
+}
+.fnc-nav__control
+  {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+}
+
